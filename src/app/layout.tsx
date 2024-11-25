@@ -17,6 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+      <meta name="google-site-verification" content="s4c5Lh_Rbi1B2gByy5mRWU4c44YhrniDppC9WSMu4nM" />
+        {/* Other meta tags or links can go here */}
+      </head>
       <body className="flex flex-col min-h-screen">
         <Header />
         <Toaster/>
