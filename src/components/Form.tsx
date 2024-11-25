@@ -10,7 +10,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Textarea } from "@/components/ui/textarea";
 import { sendMail } from "@/lib/send-mail";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";

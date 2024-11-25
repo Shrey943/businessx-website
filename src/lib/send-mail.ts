@@ -17,7 +17,6 @@ const transporter = nodemailer.createTransport({
 
 export async function sendMail({
   email,
-  sendTo,
   subject,
   text,
   html,
@@ -29,7 +28,6 @@ export async function sendMail({
   html?: string;
 }) {
   try {
-    const isVerified = await transporter.verify();
   } catch (error) {
     console.error(
       "Something Went Wrong",
