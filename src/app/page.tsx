@@ -1,8 +1,7 @@
-import ContactForm from "@/components/Form";
 
 export default function Home() {
   return (
-    <div className=" p-12">
+    <div className="p-12">
       Do you know what PROFIT you exactly make Daily? Or even Monthly??
       <br />
       Do you still keep records of your DAILY SALES on paper?
@@ -12,7 +11,7 @@ export default function Home() {
       BusinessX is a FREE, SIMPLE, AND GREAT solution for all these problems. In
       this accounting app, you can manage Inventory, check daily sales of any
       particular date, and even get the profit you made after deduction of cost
-      price and taxes. It's the best accounting solution out there.
+      price and taxes. It&apos;s the best accounting solution out there.
       <br />
       Keep records of your items with their respective images. Also, this vypar
       app assigns a unique id to all the items automatically to save your time.
