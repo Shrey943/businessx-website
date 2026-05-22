@@ -57,6 +57,12 @@ export default function TermsPage() {
             right to update these Terms at any time. Continued use of the App
             after changes constitutes acceptance of the revised Terms.
           </p>
+          <p>
+            On major update events, we may share update information over
+            registered mail to users who have provided a mailing address or are
+            registered with us. This is to ensure you are informed of
+            significant changes to the App or these Terms.
+          </p>
         </Section>
 
         <Section title="2. Description of Service">

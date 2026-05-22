@@ -264,6 +264,13 @@ export default function PrivacyPage() {
             and, where required, by providing notice within the App. We
             encourage you to review this policy periodically.
           </p>
+          <p>
+            For major update events, we may also share update information over
+            registered mail to users who have provided a mailing address or are
+            registered with us. This is done solely to keep you informed of
+            important changes that may affect your rights or how your data is
+            handled.
+          </p>
         </Section>
 
         <Section title="11. Contact Us">
