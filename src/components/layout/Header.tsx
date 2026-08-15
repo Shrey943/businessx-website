@@ -1,112 +1,124 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Features", href: "/#features" },
-  { label: "How It Works", href: "/#how-it-works" },
-  { label: "Support", href: "/support" },
+  { label: "Try it", href: "/#try" },
+  { label: "How it works", href: "/#how" },
+  { label: "Reviews", href: "/#reviews" },
+  { label: "Privacy", href: "/privacy" },
 ];
+
+const PLAY_URL =
+  "https://play.google.com/store/apps/details?id=com.shrey_businessx.android";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const raf = useRef<number | null>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      if (raf.current != null) return;
+      raf.current = requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 8);
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        setProgress(max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0);
+        raf.current = null;
+      });
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    onScroll();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf.current != null) cancelAnimationFrame(raf.current);
+    };
   }, []);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#04111D]/95 backdrop-blur-md shadow-lg border-b border-white/5"
-          : "bg-[#04111D]"
-      }`}
+      className="sticky top-0 z-[80] bg-bg/[.76] backdrop-blur-xl border-b border-ink/[.06] transition-shadow duration-300"
+      style={{
+        boxShadow: scrolled ? "0 10px 30px rgba(12,32,39,.09)" : "none",
+      }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
-            <Image
-              src="/logo.svg"
-              alt="BusinessX Logo"
-              width={36}
-              height={36}
-              className="rounded-lg"
-            />
-            <span className="text-white font-bold text-lg tracking-tight">
-              BusinessX
-            </span>
-          </Link>
+      <div className="max-w-[1220px] mx-auto px-[clamp(18px,4vw,24px)] py-[13px] flex items-center justify-between gap-5">
+        <Link href="/#top" className="flex items-center gap-[11px] flex-shrink-0 group">
+          <Image
+            src="/logo.svg"
+            alt="BusinessX"
+            width={40}
+            height={40}
+            className="rounded-xl shadow-[0_5px_16px_rgba(0,129,179,.32)] transition-transform duration-300 group-hover:-rotate-[7deg] group-hover:scale-[1.07]"
+          />
+          <span className="font-heading text-[22px] font-extrabold tracking-[-.5px] text-ink">
+            Business<span className="text-brand">X</span>
+          </span>
+        </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-gray-300 hover:text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-white/5"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <a
-              href="https://play.google.com/store/apps/details?id=com.shrey_businessx.android"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-[#0081B3] hover:bg-[#0070A0] text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
+        <nav className="hidden lg:flex items-center gap-0.5">
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className="px-3.5 py-2.5 rounded-[10px] text-[15px] font-semibold text-muted-1 transition-colors hover:text-ink hover:bg-ink/5"
             >
-              <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current">
-                <path d="M3.18 23.76c.37.21.8.23 1.2.07l12.4-7.16-2.79-2.79zm-1.93-20.4C1.09 3.69 1 4.04 1 4.43v15.14c0 .39.09.74.25 1.07l.07.07L9.67 12v-.2zm17.27 8.49-2.52-1.46-3.09 3.09 3.09 3.09 2.53-1.47c.72-.42.72-1.82-.01-2.25zM4.38.24 16.78 7.4l-2.79 2.79L1.25.31C1.65.15 2.08.17 2.45.38z" />
-              </svg>
-              Get the App
-            </a>
-          </div>
-
-          {/* Mobile menu toggle */}
-          <button
-            className="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
+              {link.label}
+            </Link>
+          ))}
+          <a
+            href={PLAY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-2 inline-flex items-center gap-2 bg-ink text-white text-sm font-bold px-5 py-[11px] rounded-xl shadow-cta transition-transform hover:-translate-y-0.5"
           >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
+            Get the app →
+          </a>
+        </nav>
+
+        <button
+          type="button"
+          onClick={() => setMobileOpen((v) => !v)}
+          aria-label="Menu"
+          className="lg:hidden w-11 h-11 rounded-xl border border-ink/10 bg-white flex items-center justify-center transition-colors hover:bg-[#F1F6F9]"
+        >
+          {mobileOpen ? <X className="w-5 h-5 text-ink" /> : <Menu className="w-5 h-5 text-ink" />}
+        </button>
       </div>
 
-      {/* Mobile menu */}
+      <div
+        className="absolute left-0 right-0 bottom-[-1px] h-[2px] origin-left pointer-events-none"
+        style={{
+          transform: `scaleX(${progress})`,
+          background: "linear-gradient(90deg,#0081B3,#31B8E8)",
+        }}
+      />
+
       {mobileOpen && (
-        <div className="md:hidden bg-[#04111D] border-t border-white/10 px-4 pb-4 pt-2">
-          <nav className="flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-gray-300 hover:text-white px-3 py-2.5 rounded-lg text-sm font-medium transition-colors hover:bg-white/5"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <a
-              href="https://play.google.com/store/apps/details?id=com.shrey_businessx.android"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-[#0081B3] text-white text-sm font-semibold px-4 py-3 rounded-lg mt-2 justify-center"
+        <div className="lg:hidden border-t border-ink/[.08] bg-bg/[.97] px-[clamp(18px,4vw,24px)] pt-3 pb-[18px] flex flex-col gap-0.5 animate-bxPop">
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              onClick={() => setMobileOpen(false)}
+              className="px-1 py-[11px] font-semibold text-ink"
             >
-              Download on Google Play
-            </a>
-          </nav>
+              {link.label}
+            </Link>
+          ))}
+          <a
+            href={PLAY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMobileOpen(false)}
+            className="mt-2 bg-ink text-white text-center py-[13px] rounded-xl font-bold"
+          >
+            Get it on Google Play
+          </a>
         </div>
       )}
     </header>

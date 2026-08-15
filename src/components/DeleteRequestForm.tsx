@@ -7,6 +7,9 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { sendMail } from "@/lib/send-mail";
 import { Loader2, CheckCircle2, AlertTriangle } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 
 const REASONS = [
   "I no longer use the app",
@@ -162,11 +165,11 @@ export default function DeleteRequestForm() {
   if (submitted) {
     return (
       <div className="flex flex-col items-center text-center py-10 px-6">
-        <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-5">
-          <CheckCircle2 className="w-8 h-8 text-green-600" />
+        <div className="w-16 h-16 rounded-full bg-success-bg flex items-center justify-center mb-5">
+          <CheckCircle2 className="w-8 h-8 text-success" />
         </div>
-        <h2 className="text-xl font-black text-[#04111D] mb-2">Request Received</h2>
-        <p className="text-slate-500 text-sm max-w-xs leading-relaxed">
+        <h2 className="font-heading text-xl font-black text-ink mb-2">Request Received</h2>
+        <p className="text-muted-1 text-sm max-w-xs leading-relaxed">
           We&apos;ve received your data deletion request and will process it within{" "}
           <strong>30 days</strong>. You&apos;ll receive a confirmation at your email
           address once complete.
@@ -179,43 +182,39 @@ export default function DeleteRequestForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
       {/* Name */}
       <div>
-        <label className="block text-sm font-semibold text-slate-700 mb-1.5">
-          Full Name <span className="text-red-500">*</span>
-        </label>
-        <input
+        <Label className="block text-sm font-semibold text-ink mb-1.5">
+          Full Name <span className="text-danger">*</span>
+        </Label>
+        <Input
           {...register("name")}
           placeholder="Rajesh Kumar"
-          className="w-full h-11 rounded-xl border border-slate-200 bg-white px-3.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0081B3]/40 focus:border-[#0081B3] transition"
+          className="h-11 rounded-xl border-ink/10 focus-visible:ring-brand/40 focus-visible:border-brand"
         />
-        {errors.name && (
-          <p className="mt-1.5 text-xs text-red-500">{errors.name.message}</p>
-        )}
+        {errors.name && <p className="mt-1.5 text-xs text-danger">{errors.name.message}</p>}
       </div>
 
       {/* Email */}
       <div>
-        <label className="block text-sm font-semibold text-slate-700 mb-1.5">
-          Registered Email Address <span className="text-red-500">*</span>
-        </label>
-        <input
+        <Label className="block text-sm font-semibold text-ink mb-1.5">
+          Registered Email Address <span className="text-danger">*</span>
+        </Label>
+        <Input
           {...register("email")}
           type="email"
           placeholder="you@example.com"
-          className="w-full h-11 rounded-xl border border-slate-200 bg-white px-3.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0081B3]/40 focus:border-[#0081B3] transition"
+          className="h-11 rounded-xl border-ink/10 focus-visible:ring-brand/40 focus-visible:border-brand"
         />
-        {errors.email && (
-          <p className="mt-1.5 text-xs text-red-500">{errors.email.message}</p>
-        )}
+        {errors.email && <p className="mt-1.5 text-xs text-danger">{errors.email.message}</p>}
       </div>
 
       {/* Reason */}
       <div>
-        <label className="block text-sm font-semibold text-slate-700 mb-1.5">
-          Reason for Deletion <span className="text-red-500">*</span>
-        </label>
+        <Label className="block text-sm font-semibold text-ink mb-1.5">
+          Reason for Deletion <span className="text-danger">*</span>
+        </Label>
         <select
           {...register("reason")}
-          className="w-full h-11 rounded-xl border border-slate-200 bg-white px-3.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0081B3]/40 focus:border-[#0081B3] transition appearance-none"
+          className="w-full h-11 rounded-xl border border-ink/10 bg-white px-3.5 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition appearance-none"
           defaultValue=""
         >
           <option value="" disabled>
@@ -227,32 +226,27 @@ export default function DeleteRequestForm() {
             </option>
           ))}
         </select>
-        {errors.reason && (
-          <p className="mt-1.5 text-xs text-red-500">{errors.reason.message}</p>
-        )}
+        {errors.reason && <p className="mt-1.5 text-xs text-danger">{errors.reason.message}</p>}
       </div>
 
       {/* Details */}
       <div>
-        <label className="block text-sm font-semibold text-slate-700 mb-1.5">
-          Additional Details{" "}
-          <span className="text-slate-400 font-normal">(optional)</span>
-        </label>
-        <textarea
+        <Label className="block text-sm font-semibold text-ink mb-1.5">
+          Additional Details <span className="text-muted-3 font-normal">(optional)</span>
+        </Label>
+        <Textarea
           {...register("details")}
           rows={3}
           placeholder="Anything else you'd like us to know…"
-          className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0081B3]/40 focus:border-[#0081B3] transition resize-none"
+          className="rounded-xl border-ink/10 focus-visible:ring-brand/40 focus-visible:border-brand resize-none"
         />
-        {errors.details && (
-          <p className="mt-1.5 text-xs text-red-500">{errors.details.message}</p>
-        )}
+        {errors.details && <p className="mt-1.5 text-xs text-danger">{errors.details.message}</p>}
       </div>
 
       {/* Warning banner */}
-      <div className="flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-xl p-4">
-        <AlertTriangle className="w-4 h-4 text-amber-600 mt-0.5 flex-shrink-0" />
-        <p className="text-xs text-amber-800 leading-relaxed">
+      <div className="flex items-start gap-3 rounded-xl p-4" style={{ background: "#FFF8E1", border: "1px solid #FDE68A" }}>
+        <AlertTriangle className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "#B45309" }} />
+        <p className="text-xs leading-relaxed" style={{ color: "#92400E" }}>
           This action is <strong>permanent and irreversible</strong>. All your inventory,
           sales history, and reports will be deleted. Export your data first if you
           need a copy.
@@ -265,22 +259,20 @@ export default function DeleteRequestForm() {
           <input
             type="checkbox"
             {...register("confirm")}
-            className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#0081B3] focus:ring-[#0081B3]/40 flex-shrink-0 cursor-pointer"
+            className="mt-0.5 w-4 h-4 rounded border-ink/20 text-brand focus:ring-brand/40 flex-shrink-0 cursor-pointer"
           />
-          <span className="text-sm text-slate-600 leading-relaxed group-hover:text-slate-800 transition">
+          <span className="text-sm text-muted-1 leading-relaxed group-hover:text-ink transition">
             I understand that deleting my data is permanent and cannot be undone.
           </span>
         </label>
-        {errors.confirm && (
-          <p className="mt-1.5 text-xs text-red-500">{errors.confirm.message}</p>
-        )}
+        {errors.confirm && <p className="mt-1.5 text-xs text-danger">{errors.confirm.message}</p>}
       </div>
 
       {/* Submit */}
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full h-11 rounded-xl bg-[#0081B3] hover:bg-[#0070A0] disabled:opacity-60 text-white font-bold text-sm transition-colors flex items-center justify-center gap-2"
+        className="w-full h-11 rounded-xl bg-brand hover:bg-brand-hover disabled:opacity-60 text-white font-bold text-sm transition-colors flex items-center justify-center gap-2"
       >
         {isSubmitting ? (
           <>
@@ -292,12 +284,9 @@ export default function DeleteRequestForm() {
         )}
       </button>
 
-      <p className="text-center text-xs text-slate-400">
+      <p className="text-center text-xs text-muted-3">
         Processing takes up to 30 days · Questions?{" "}
-        <a
-          href="mailto:businessxteam@gmail.com"
-          className="text-[#0081B3] hover:underline"
-        >
+        <a href="mailto:businessxteam@gmail.com" className="text-brand hover:text-brand-hover hover:underline">
           businessxteam@gmail.com
         </a>
       </p>

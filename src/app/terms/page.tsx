@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PageBanner from "@/components/legal/PageBanner";
 
 export const metadata: Metadata = {
   title: "Terms of Service — BusinessX",
@@ -12,35 +13,25 @@ const CONTACT_EMAIL = "businessxteam@gmail.com";
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="mb-10">
-      <h2 className="text-xl font-bold text-[#1A1A2E] mb-3">{title}</h2>
-      <div className="text-gray-600 leading-relaxed space-y-3">{children}</div>
+      <h2 className="font-heading text-xl font-bold text-ink mb-3">{title}</h2>
+      <div className="text-muted-1 leading-relaxed space-y-3">{children}</div>
     </section>
   );
 }
 
 export default function TermsPage() {
   return (
-    <div className="pt-16 bg-white min-h-screen">
-      {/* Header banner */}
-      <div className="bg-[#04111D] py-14">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <div className="text-[#38BDF8] text-sm font-semibold uppercase tracking-widest mb-2">
-            Legal
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-black text-white mb-3">
-            Terms of Service
-          </h1>
-          <p className="text-gray-400 text-sm">
-            Effective date: {EFFECTIVE_DATE} &nbsp;·&nbsp; Last updated:{" "}
-            {EFFECTIVE_DATE}
-          </p>
-        </div>
-      </div>
+    <div className="bg-white min-h-screen">
+      <PageBanner
+        eyebrow="Legal"
+        title="Terms of Service"
+        meta={`Effective date: ${EFFECTIVE_DATE}  ·  Last updated: ${EFFECTIVE_DATE}`}
+      />
 
       {/* Content */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-14">
         {/* Intro */}
-        <div className="bg-[#F8F9FF] border border-[#E8EAFF] rounded-xl p-5 mb-10 text-sm text-gray-600 leading-relaxed">
+        <div className="rounded-2xl p-5 mb-10 text-sm text-muted-1 leading-relaxed" style={{ background: "#E9F5FB", border: "1px solid rgba(0,129,179,.14)" }}>
           Please read these Terms of Service (&ldquo;Terms&rdquo;) carefully
           before downloading or using the BusinessX Android application. By
           downloading, installing, or using the App you agree to be bound by
@@ -138,7 +129,7 @@ export default function TermsPage() {
             paid feature, please contact us at{" "}
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="text-[#0081B3] hover:underline"
+              className="text-brand hover:text-brand-hover hover:underline"
             >
               {CONTACT_EMAIL}
             </a>{" "}
@@ -188,7 +179,7 @@ export default function TermsPage() {
         <Section title="9. Data & Privacy">
           <p>
             Your use of the App is also governed by our{" "}
-            <Link href="/privacy" className="text-[#0081B3] hover:underline">
+            <Link href="/privacy" className="text-brand hover:text-brand-hover hover:underline">
               Privacy Policy
             </Link>
             , which is incorporated into these Terms by reference. By using the
@@ -237,7 +228,7 @@ export default function TermsPage() {
             You may stop using the App at any time. Uninstalling the App
             removes all locally stored data. If you wish to delete any data
             associated with your account, please visit{" "}
-            <Link href="/delete" className="text-[#0081B3] hover:underline">
+            <Link href="/delete" className="text-brand hover:text-brand-hover hover:underline">
               our data deletion page
             </Link>
             .
@@ -258,25 +249,25 @@ export default function TermsPage() {
             If you have any questions about these Terms of Service, please
             contact us:
           </p>
-          <div className="bg-gray-50 border border-gray-100 rounded-xl p-4 mt-2">
-            <p className="font-semibold text-[#1A1A2E]">BusinessX Support</p>
+          <div className="rounded-2xl p-4 mt-2" style={{ background: "#F1F6F9" }}>
+            <p className="font-heading font-semibold text-ink">BusinessX Support</p>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="text-[#0081B3] hover:underline text-sm mt-1 block"
+              className="text-brand hover:text-brand-hover hover:underline text-sm mt-1 block"
             >
               {CONTACT_EMAIL}
             </a>
           </div>
         </Section>
 
-        <div className="border-t border-gray-100 pt-8 flex flex-wrap gap-4">
+        <div className="border-t border-ink/10 pt-8 flex flex-wrap gap-4">
           <Link
             href="/privacy"
-            className="text-[#0081B3] hover:underline text-sm font-medium"
+            className="text-brand hover:text-brand-hover hover:underline text-sm font-medium"
           >
             Privacy Policy →
           </Link>
-          <Link href="/" className="text-gray-400 hover:text-gray-600 text-sm">
+          <Link href="/" className="text-muted-3 hover:text-muted-1 text-sm">
             ← Back to Home
           </Link>
         </div>

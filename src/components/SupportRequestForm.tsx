@@ -7,6 +7,9 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { sendMail } from "@/lib/send-mail";
 import { Loader2, CheckCircle2 } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 
 const TOPICS = [
   "Bug Report",
@@ -147,11 +150,11 @@ export default function SupportRequestForm() {
   if (submitted) {
     return (
       <div className="flex flex-col items-center text-center py-10 px-6">
-        <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-5">
-          <CheckCircle2 className="w-8 h-8 text-green-600" />
+        <div className="w-16 h-16 rounded-full bg-success-bg flex items-center justify-center mb-5">
+          <CheckCircle2 className="w-8 h-8 text-success" />
         </div>
-        <h2 className="text-xl font-black text-[#04111D] mb-2">Message Sent</h2>
-        <p className="text-slate-500 text-sm max-w-xs leading-relaxed">
+        <h2 className="font-heading text-xl font-black text-ink mb-2">Message Sent</h2>
+        <p className="text-muted-1 text-sm max-w-xs leading-relaxed">
           Thanks for reaching out. Our team typically replies within{" "}
           <strong>1–2 business days</strong> at the email address you provided.
         </p>
@@ -163,43 +166,39 @@ export default function SupportRequestForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
       {/* Name */}
       <div>
-        <label className="block text-sm font-semibold text-slate-700 mb-1.5">
-          Full Name <span className="text-red-500">*</span>
-        </label>
-        <input
+        <Label className="block text-sm font-semibold text-ink mb-1.5">
+          Full Name <span className="text-danger">*</span>
+        </Label>
+        <Input
           {...register("name")}
           placeholder="Rajesh Kumar"
-          className="w-full h-11 rounded-xl border border-slate-200 bg-white px-3.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0081B3]/40 focus:border-[#0081B3] transition"
+          className="h-11 rounded-xl border-ink/10 focus-visible:ring-brand/40 focus-visible:border-brand"
         />
-        {errors.name && (
-          <p className="mt-1.5 text-xs text-red-500">{errors.name.message}</p>
-        )}
+        {errors.name && <p className="mt-1.5 text-xs text-danger">{errors.name.message}</p>}
       </div>
 
       {/* Email */}
       <div>
-        <label className="block text-sm font-semibold text-slate-700 mb-1.5">
-          Email Address <span className="text-red-500">*</span>
-        </label>
-        <input
+        <Label className="block text-sm font-semibold text-ink mb-1.5">
+          Email Address <span className="text-danger">*</span>
+        </Label>
+        <Input
           {...register("email")}
           type="email"
           placeholder="you@example.com"
-          className="w-full h-11 rounded-xl border border-slate-200 bg-white px-3.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0081B3]/40 focus:border-[#0081B3] transition"
+          className="h-11 rounded-xl border-ink/10 focus-visible:ring-brand/40 focus-visible:border-brand"
         />
-        {errors.email && (
-          <p className="mt-1.5 text-xs text-red-500">{errors.email.message}</p>
-        )}
+        {errors.email && <p className="mt-1.5 text-xs text-danger">{errors.email.message}</p>}
       </div>
 
       {/* Topic */}
       <div>
-        <label className="block text-sm font-semibold text-slate-700 mb-1.5">
-          Topic <span className="text-red-500">*</span>
-        </label>
+        <Label className="block text-sm font-semibold text-ink mb-1.5">
+          Topic <span className="text-danger">*</span>
+        </Label>
         <select
           {...register("topic")}
-          className="w-full h-11 rounded-xl border border-slate-200 bg-white px-3.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0081B3]/40 focus:border-[#0081B3] transition appearance-none"
+          className="w-full h-11 rounded-xl border border-ink/10 bg-white px-3.5 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition appearance-none"
           defaultValue=""
         >
           <option value="" disabled>
@@ -211,32 +210,28 @@ export default function SupportRequestForm() {
             </option>
           ))}
         </select>
-        {errors.topic && (
-          <p className="mt-1.5 text-xs text-red-500">{errors.topic.message}</p>
-        )}
+        {errors.topic && <p className="mt-1.5 text-xs text-danger">{errors.topic.message}</p>}
       </div>
 
       {/* Message */}
       <div>
-        <label className="block text-sm font-semibold text-slate-700 mb-1.5">
-          Message <span className="text-red-500">*</span>
-        </label>
-        <textarea
+        <Label className="block text-sm font-semibold text-ink mb-1.5">
+          Message <span className="text-danger">*</span>
+        </Label>
+        <Textarea
           {...register("message")}
           rows={5}
           placeholder="Tell us what's going on…"
-          className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0081B3]/40 focus:border-[#0081B3] transition resize-none"
+          className="rounded-xl border-ink/10 focus-visible:ring-brand/40 focus-visible:border-brand resize-none"
         />
-        {errors.message && (
-          <p className="mt-1.5 text-xs text-red-500">{errors.message.message}</p>
-        )}
+        {errors.message && <p className="mt-1.5 text-xs text-danger">{errors.message.message}</p>}
       </div>
 
       {/* Submit */}
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full h-11 rounded-xl bg-[#0081B3] hover:bg-[#0070A0] disabled:opacity-60 text-white font-bold text-sm transition-colors flex items-center justify-center gap-2"
+        className="w-full h-11 rounded-xl bg-brand hover:bg-brand-hover disabled:opacity-60 text-white font-bold text-sm transition-colors flex items-center justify-center gap-2"
       >
         {isSubmitting ? (
           <>
@@ -248,12 +243,9 @@ export default function SupportRequestForm() {
         )}
       </button>
 
-      <p className="text-center text-xs text-slate-400">
+      <p className="text-center text-xs text-muted-3">
         Or email us directly at{" "}
-        <a
-          href="mailto:businessxteam@gmail.com"
-          className="text-[#0081B3] hover:underline"
-        >
+        <a href="mailto:businessxteam@gmail.com" className="text-brand hover:text-brand-hover hover:underline">
           businessxteam@gmail.com
         </a>
       </p>
