@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
-const PLAY_URL =
-  "https://play.google.com/store/apps/details?id=com.shrey_businessx.android";
+import { PLAY_URL } from "@/lib/site";
 
 const productLinks = [
   { label: "Try it live", href: "/#try" },
@@ -10,6 +8,7 @@ const productLinks = [
   { label: "Offline & backup", href: "/#offline" },
   { label: "Export report", href: "/#export" },
   { label: "Reviews", href: "/#reviews" },
+  { label: "Blog", href: "/blogs" },
 ];
 
 const legalLinks = [

@@ -3,8 +3,16 @@ import Link from "next/link";
 import PageBanner from "@/components/legal/PageBanner";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — BusinessX",
+  title: "Terms of Service",
   description: "Terms of Service for the BusinessX Android app.",
+  alternates: {
+    canonical: "/terms",
+  },
+  openGraph: {
+    url: "/terms",
+    title: "Terms of Service — BusinessX",
+    description: "Terms of Service for the BusinessX Android app.",
+  },
 };
 
 const EFFECTIVE_DATE = "January 1, 2025";

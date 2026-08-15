@@ -1,9 +1,7 @@
 "use client";
 
 import { toast } from "sonner";
-
-const PLAY_URL =
-  "https://play.google.com/store/apps/details?id=com.shrey_businessx.android";
+import { PLAY_URL } from "@/lib/site";
 
 export default function AppStoreCtas() {
   return (

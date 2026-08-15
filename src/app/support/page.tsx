@@ -4,8 +4,16 @@ import SupportRequestForm from "@/components/SupportRequestForm";
 import PageBanner from "@/components/legal/PageBanner";
 
 export const metadata: Metadata = {
-  title: "Support — BusinessX",
+  title: "Support",
   description: "Get help with your BusinessX account, report a bug, or ask us a question.",
+  alternates: {
+    canonical: "/support",
+  },
+  openGraph: {
+    url: "/support",
+    title: "Support — BusinessX",
+    description: "Get help with your BusinessX account, report a bug, or ask us a question.",
+  },
 };
 
 const INFO_CARDS = [

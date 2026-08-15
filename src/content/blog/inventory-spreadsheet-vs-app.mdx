@@ -1,0 +1,35 @@
+A spreadsheet is not a bad way to track inventory. It's free, you already know how to use it, and for a genuinely small operation it can be entirely sufficient. The mistake isn't starting with a spreadsheet — it's not noticing when it's quietly stopped working.
+
+## Where a spreadsheet is genuinely the right call
+
+- **Fewer than ~30 SKUs** and low transaction volume — a few sales a day, manageable to enter by hand.
+- **One person doing all the data entry.** No coordination problem, no version conflicts.
+- **You mainly want a stock count, not a profit engine.** If you're not trying to compute per-item margin automatically, a running tally is enough.
+- **You're testing whether tracking inventory formally is even worth the effort**, before you invest time picking a tool.
+
+If that's your shop, switching to an app right now would be solving a problem you don't have yet. Keep the spreadsheet.
+
+## The specific signs it's time to move
+
+**1. You're spending more time maintaining the sheet than running the shop.**
+Formulas breaking when someone inserts a row in the wrong place, manually re-summing totals, copy-pasting between a "stock" tab and a "sales" tab that have drifted out of sync — if this is eating 30+ minutes a day, the spreadsheet has become a job in itself.
+
+**2. Two people need to update it at the same time.**
+Spreadsheets handle single-editor use fine. The moment you have a cashier updating sales while you're updating stock counts from a delivery, you get overwritten cells, "who has the latest version" confusion, and — if you're on a shared file rather than truly live-synced — silent data loss when two edits collide.
+
+**3. You've had a stock count be wrong and not known why.**
+In a spreadsheet, a wrong number and a typo look identical — there's no audit trail telling you *this sale reduced stock by 3 on Tuesday at 4pm*. Once "why doesn't this number match what's on the shelf" starts happening regularly, you need a system that logs transactions, not just a running total.
+
+**4. You want profit per item, not just a stock count.**
+Doing gross margin by hand for one item is a formula. Doing it correctly for 200 items, with cost prices that change when suppliers change prices, recalculated every time you make a sale — that's not a spreadsheet limitation exactly, it's just that nobody actually keeps it current by hand once it's more than a few dozen rows. See [how to calculate profit margin](/blogs/how-to-calculate-profit-margin-small-shop) for what the math looks like at small scale, where it's still very manageable.
+
+**5. You need the data somewhere other than your laptop.**
+If checking today's numbers means being at the one computer with the file on it, that's a real workflow constraint the moment you're not physically at that desk — at the counter, at a supplier, at home in the evening.
+
+## What actually changes when you switch
+
+The honest pitch for a dedicated app isn't "spreadsheets are bad" — it's that a purpose-built app removes the maintenance overhead: stock automatically decreases when you log a sale (no manual re-subtracting), profit is computed per transaction instead of recalculated in a formula you have to remember to update, and the data is usable from your phone at the counter instead of only from wherever the file lives. What you give up is total structural flexibility — a spreadsheet can be shaped into literally anything; an app has an opinion about how your data is organized.
+
+## A reasonable way to switch without losing anything
+
+Most inventory apps, including [BusinessX](/), let you export data to CSV/Excel — so the transition isn't all-or-nothing. Run the app alongside your spreadsheet for a week, compare the numbers, and only retire the spreadsheet once you trust the app's totals. If you're evaluating which app to move to, [our comparison of free inventory apps](/blogs/free-inventory-management-apps-small-business) covers what actually differs between the free options — and if patchy signal in your shop is a concern, [check the offline behavior](/blogs/offline-inventory-management-no-internet) before you commit, since that's the thing spreadsheets never had to worry about and some apps quietly get wrong.

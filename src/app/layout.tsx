@@ -4,6 +4,9 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Toaster } from "sonner";
+import JsonLd from "@/components/seo/JsonLd";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/schema";
+import { APP_NAME, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -20,10 +23,57 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "BusinessX — Know your profit, every day",
-  description:
-    "BusinessX is the Android app that helps small business owners track inventory, record daily sales, and understand their profits. Free to download, works offline.",
-  keywords: "inventory management, sales tracking, small business app, Android, profit tracking",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "BusinessX — Free Inventory & Sales Tracker for Small Business",
+    template: "%s — BusinessX",
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "business",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: SITE_NAME,
+    title: "BusinessX — Free Inventory & Sales Tracker for Small Business",
+    description: SITE_DESCRIPTION,
+    locale: "en_US",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} — ${APP_NAME}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BusinessX — Free Inventory & Sales Tracker for Small Business",
+    description: SITE_DESCRIPTION,
+    images: ["/opengraph-image"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  verification: {
+    google: "s4c5Lh_Rbi1B2gByy5mRWU4c44YhrniDppC9WSMu4nM",
+  },
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({
@@ -33,13 +83,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${poppins.variable} ${dmSans.variable}`}>
-      <head>
-        <meta
-          name="google-site-verification"
-          content="s4c5Lh_Rbi1B2gByy5mRWU4c44YhrniDppC9WSMu4nM"
-        />
-      </head>
       <body className="flex flex-col min-h-screen bg-bg text-ink">
+        <JsonLd data={organizationJsonLd} />
+        <JsonLd data={websiteJsonLd} />
         <Header />
         <Toaster
           position="bottom-center"

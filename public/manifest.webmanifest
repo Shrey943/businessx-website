@@ -1,0 +1,16 @@
+{
+  "name": "BusinessX — Daily Sales Profit & Inventory",
+  "short_name": "BusinessX",
+  "description": "Track stock, record sales and see real profit — offline, in any currency.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F3F8FB",
+  "theme_color": "#0081B3",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

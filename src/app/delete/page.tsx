@@ -4,9 +4,17 @@ import DeleteRequestForm from "@/components/DeleteRequestForm";
 import PageBanner from "@/components/legal/PageBanner";
 
 export const metadata: Metadata = {
-  title: "Delete My Data — BusinessX",
+  title: "Delete My Data",
   description:
     "Submit a request to permanently delete your BusinessX account data.",
+  alternates: {
+    canonical: "/delete",
+  },
+  openGraph: {
+    url: "/delete",
+    title: "Delete My Data — BusinessX",
+    description: "Submit a request to permanently delete your BusinessX account data.",
+  },
 };
 
 const WHAT_GETS_DELETED = [

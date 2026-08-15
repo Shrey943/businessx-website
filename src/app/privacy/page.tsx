@@ -3,8 +3,16 @@ import Link from "next/link";
 import PageBanner from "@/components/legal/PageBanner";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — BusinessX",
+  title: "Privacy Policy",
   description: "Privacy Policy for the BusinessX Android app. Learn how we collect, use, and protect your data.",
+  alternates: {
+    canonical: "/privacy",
+  },
+  openGraph: {
+    url: "/privacy",
+    title: "Privacy Policy — BusinessX",
+    description: "Privacy Policy for the BusinessX Android app. Learn how we collect, use, and protect your data.",
+  },
 };
 
 const EFFECTIVE_DATE = "January 1, 2025";

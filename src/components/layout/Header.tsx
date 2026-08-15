@@ -4,16 +4,15 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { PLAY_URL } from "@/lib/site";
 
 const navLinks = [
   { label: "Try it", href: "/#try" },
   { label: "How it works", href: "/#how" },
+  { label: "Blog", href: "/blogs" },
   { label: "Reviews", href: "/#reviews" },
   { label: "Privacy", href: "/privacy" },
 ];
-
-const PLAY_URL =
-  "https://play.google.com/store/apps/details?id=com.shrey_businessx.android";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -60,7 +59,7 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-0.5">
+        <nav aria-label="Main" className="hidden lg:flex items-center gap-0.5">
           {navLinks.map((link) => (
             <Link
               key={link.label}
