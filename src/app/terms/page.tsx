@@ -4,18 +4,19 @@ import PageBanner from "@/components/legal/PageBanner";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Terms of Service for the BusinessX Android app.",
+  description: "Terms of Service for the BusinessX app (Android and iOS).",
   alternates: {
     canonical: "/terms",
   },
   openGraph: {
     url: "/terms",
     title: "Terms of Service — BusinessX",
-    description: "Terms of Service for the BusinessX Android app.",
+    description: "Terms of Service for the BusinessX app (Android and iOS).",
   },
 };
 
 const EFFECTIVE_DATE = "January 1, 2025";
+const LAST_UPDATED_DATE = "August 17, 2026";
 const CONTACT_EMAIL = "businessxteam@gmail.com";
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -33,7 +34,7 @@ export default function TermsPage() {
       <PageBanner
         eyebrow="Legal"
         title="Terms of Service"
-        meta={`Effective date: ${EFFECTIVE_DATE}  ·  Last updated: ${EFFECTIVE_DATE}`}
+        meta={`Effective date: ${EFFECTIVE_DATE}  ·  Last updated: ${LAST_UPDATED_DATE}`}
       />
 
       {/* Content */}
@@ -41,9 +42,10 @@ export default function TermsPage() {
         {/* Intro */}
         <div className="rounded-2xl p-5 mb-10 text-sm text-muted-1 leading-relaxed" style={{ background: "#E9F5FB", border: "1px solid rgba(0,129,179,.14)" }}>
           Please read these Terms of Service (&ldquo;Terms&rdquo;) carefully
-          before downloading or using the BusinessX Android application. By
-          downloading, installing, or using the App you agree to be bound by
-          these Terms. If you do not agree to these Terms, do not use the App.
+          before downloading or using the BusinessX mobile application
+          (Android and iOS). By downloading, installing, or using the App you
+          agree to be bound by these Terms. If you do not agree to these
+          Terms, do not use the App.
         </div>
 
         <Section title="1. Acceptance of Terms">
@@ -51,10 +53,11 @@ export default function TermsPage() {
             These Terms constitute a legally binding agreement between you
             (&ldquo;User&rdquo;) and <strong>BusinessX</strong>{" "}
             (&ldquo;we&rdquo;, &ldquo;our&rdquo;, &ldquo;us&rdquo;) governing
-            your use of the BusinessX mobile application and any related
-            services (collectively, the &ldquo;Service&rdquo;). We reserve the
-            right to update these Terms at any time. Continued use of the App
-            after changes constitutes acceptance of the revised Terms.
+            your use of the BusinessX mobile application (Android and iOS) and
+            any related services (collectively, the &ldquo;Service&rdquo;). We
+            reserve the right to update these Terms at any time. Continued use
+            of the App after changes constitutes acceptance of the revised
+            Terms.
           </p>
           <p>
             On major update events, we may share update information over
@@ -66,10 +69,12 @@ export default function TermsPage() {
 
         <Section title="2. Description of Service">
           <p>
-            BusinessX is an Android application that helps small business
-            owners track inventory, record sales, manage expenses, and generate
-            financial reports. The App stores data locally on your device and
-            optionally backs it up to your Google Drive account.
+            BusinessX is a mobile application, available on Android and iOS,
+            that helps small business owners track inventory, record sales,
+            manage expenses, and generate financial reports. The App stores
+            data locally on your device and optionally backs it up to your
+            Google Drive account (Android and iOS) or your iCloud account
+            (iOS only).
           </p>
           <p>
             We reserve the right to modify, suspend, or discontinue any feature
@@ -89,8 +94,8 @@ export default function TermsPage() {
           <p>
             Subject to your compliance with these Terms, we grant you a
             personal, non-exclusive, non-transferable, revocable, limited
-            license to download and use the App on Android devices you own or
-            control, solely for your personal and business purposes.
+            license to download and use the App on Android or iOS devices you
+            own or control, solely for your personal and business purposes.
           </p>
           <p>
             You may not: (a) copy, modify, or distribute the App; (b)
@@ -108,15 +113,19 @@ export default function TermsPage() {
             website.
           </p>
           <p>
-            <strong>Billing:</strong> Subscriptions are billed through the
-            Google Play Store on the billing cycle you select (monthly or
-            annual). All payments are processed and managed by Google. We do
-            not store or have access to your payment information.
+            <strong>Billing:</strong> On Android, subscriptions are billed
+            through the Google Play Store on the billing cycle you select
+            (monthly or annual), and all payments are processed and managed by
+            Google. On iOS, subscriptions are billed through the Apple App
+            Store using Apple&apos;s In-App Purchase system, and all payments
+            are processed and managed by Apple. We do not store or have access
+            to your payment information on either platform.
           </p>
           <p>
             <strong>Auto-renewal:</strong> Paid subscriptions auto-renew at the
-            end of each billing period unless cancelled before the renewal date
-            through your Google Play account.
+            end of each billing period unless cancelled before the renewal
+            date through your Google Play account (Android) or your Apple ID
+            subscription settings (iOS).
           </p>
           <p>
             <strong>Price changes:</strong> We may change subscription prices
@@ -127,10 +136,23 @@ export default function TermsPage() {
 
         <Section title="6. Refund Policy">
           <p>
-            Refunds for in-app purchases and subscriptions are handled by
-            Google Play Store policies. You may request a refund through the
-            Google Play Store within the applicable refund window. We do not
-            independently process refunds outside of Google Play&apos;s process.
+            Refunds for in-app purchases and subscriptions are handled by the
+            store you purchased through. On Android, refunds are governed by
+            Google Play Store policies — you may request one through the
+            Google Play Store within the applicable refund window. On iOS,
+            refunds are governed by Apple&apos;s policies — you may request one
+            at{" "}
+            <a
+              href="https://reportaproblem.apple.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand hover:text-brand-hover hover:underline"
+            >
+              reportaproblem.apple.com
+            </a>{" "}
+            or through your Apple ID subscription settings. We do not
+            independently process refunds outside of these platforms&apos;
+            processes.
           </p>
           <p>
             If you experience a technical issue that prevents you from using a

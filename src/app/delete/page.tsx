@@ -21,7 +21,7 @@ const WHAT_GETS_DELETED = [
   "All inventory items and stock records",
   "Complete sales history and transactions",
   "Monthly reports and expense logs",
-  "Google Drive backup files (you must delete these manually)",
+  "Google Drive or iCloud backup files — deleted automatically if you use in-app account deletion; if you're submitting this form instead, you'll need to remove them yourself via your Google Account's third-party access settings or your device's iCloud storage settings, since we can't access your personal cloud storage",
   "Your account profile and preferences",
 ];
 
@@ -59,6 +59,18 @@ export default function DeletePage() {
         <div className="grid lg:grid-cols-[1fr_420px] gap-10 items-start">
           {/* Left — info column */}
           <div className="space-y-8">
+            {/* In-app deletion recommendation */}
+            <div
+              className="rounded-2xl p-5 text-sm text-muted-1 leading-relaxed"
+              style={{ background: "#E9F5FB", border: "1px solid rgba(0,129,179,.14)" }}
+            >
+              <strong>Prefer instant deletion?</strong> If you still have
+              BusinessX installed, go to <strong>Profile → Delete Account</strong>{" "}
+              inside the app instead. It deletes everything immediately —
+              including your Google Drive or iCloud backup — with no 30-day
+              wait. Use this form only if you can&apos;t access the app.
+            </div>
+
             {/* Info cards */}
             <div className="space-y-4">
               {INFO_CARDS.map((card) => (
