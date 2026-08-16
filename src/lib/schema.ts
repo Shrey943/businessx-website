@@ -22,10 +22,24 @@ export const websiteJsonLd = {
 };
 
 /**
- * Real, on-page reviews from ReviewsSection.tsx — no aggregateRating here.
- * Adding one requires a true Play Store rating/count (see project TODO); a
- * self-declared rating not visibly backed on the page risks a structured-data
- * manual action.
+ * Real, on-page reviews from ReviewsSection.tsx.
+ *
+ * `reviewRating` on each Review + `aggregateRating` below were added
+ * 2026-08-17 after the Rich Results Test flagged this block as invalid:
+ * Google's Review-snippet spec rejects multiple `Review` items on one
+ * entity when there's no `aggregateRating` ("Multiple reviews without
+ * aggregateRating object" — a *critical* error, not just a warning).
+ *
+ * These values are NOT the Play Store's public rating (that one's still
+ * deliberately absent — see project TODO, it needs the real Play Store
+ * number). They're computed straight from ReviewsSection.tsx: all 4 reviews
+ * render "★★★★★" (5/5) on the page, so ratingValue 5 + reviewCount 4 is
+ * exactly what's visibly on the page, not a separate claim — same
+ * `Rahul Jain` / `Zaibullah Mohsin` / `M. Abdullah Business` / `Rajesh
+ * Jadhav` reviews, same star count, just made spec-valid. If a review's
+ * displayed star count in ReviewsSection.tsx ever changes, update
+ * `ratingValue` here to match (bump `reviewCount` when a review is
+ * added/removed too).
  */
 export const softwareApplicationJsonLd = {
   "@context": "https://schema.org",
@@ -43,11 +57,17 @@ export const softwareApplicationJsonLd = {
     price: "0",
     priceCurrency: "USD",
   },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: 5,
+    reviewCount: 4,
+  },
   review: [
     {
       "@type": "Review",
       author: { "@type": "Person", name: "Rahul Jain" },
       datePublished: "2022-01-10",
+      reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
       reviewBody:
         "I was looking for such an app for a very long time in which I can store my products with images and can get the profit reports. And I have to say that, this app meets all the requirements and it's simple Ui Is just very easy to use.",
     },
@@ -55,6 +75,7 @@ export const softwareApplicationJsonLd = {
       "@type": "Review",
       author: { "@type": "Person", name: "Zaibullah Mohsin" },
       datePublished: "2026-05-24",
+      reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
       reviewBody:
         "It made my mobile shop accounting very easy. Now I can easily understand my daily profit, loss, sales, and expenses without confusion. Before this, managing business records was difficult, but this app saved my time and made everything simple.",
     },
@@ -62,6 +83,7 @@ export const softwareApplicationJsonLd = {
       "@type": "Review",
       author: { "@type": "Person", name: "M. Abdullah Business" },
       datePublished: "2026-07-08",
+      reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
       reviewBody:
         "One of the best management system app. I really recommend for ever business management, special for supermarket and shope.",
     },
@@ -69,6 +91,7 @@ export const softwareApplicationJsonLd = {
       "@type": "Review",
       author: { "@type": "Person", name: "Rajesh Jadhav" },
       datePublished: "2026-08-03",
+      reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
       reviewBody:
         "Your app is very clean, fast, and easy to use. Everything else is excellent and app is very clean and easy.",
     },
