@@ -14,6 +14,15 @@ export type BlogPost = {
  */
 export const posts: BlogPost[] = [
   {
+    slug: "physical-inventory-count-small-business",
+    title: "How to Do a Physical Inventory Count Without Closing Your Shop",
+    description:
+      "A practical guide to cycle counting for small retail — how to catch stock drift on a rolling schedule instead of one disruptive full shutdown.",
+    excerpt:
+      "Full stock takes don't have to mean a closed day. Here's a cycle-counting rotation that catches drift early and only costs you 20-30 minutes a few times a week.",
+    datePublished: "2026-08-22",
+  },
+  {
     slug: "free-inventory-management-apps-small-business",
     title: "The Best Free Inventory Management Apps for Small Business (2026)",
     description:

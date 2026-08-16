@@ -32,9 +32,11 @@ export function useHowActive(count: number) {
       if (raf == null) raf = requestAnimationFrame(update);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
     update();
     return () => {
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
       if (raf != null) cancelAnimationFrame(raf);
     };
   }, [count]);

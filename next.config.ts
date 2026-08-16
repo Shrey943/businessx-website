@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
       {
         source: "/:path*",
         has: [{ type: "host", value: "businessx-website.vercel.app" }],
-        destination: "https://mybusinessx.com/:path*",
+        destination: "https://www.mybusinessx.com/:path*",
         permanent: true,
       },
     ];
