@@ -22,24 +22,21 @@ export const websiteJsonLd = {
 };
 
 /**
- * Real, on-page reviews from ReviewsSection.tsx.
- *
  * `reviewRating` on each Review + `aggregateRating` below were added
  * 2026-08-17 after the Rich Results Test flagged this block as invalid:
  * Google's Review-snippet spec rejects multiple `Review` items on one
  * entity when there's no `aggregateRating` ("Multiple reviews without
  * aggregateRating object" — a *critical* error, not just a warning).
  *
- * These values are NOT the Play Store's public rating (that one's still
- * deliberately absent — see project TODO, it needs the real Play Store
- * number). They're computed straight from ReviewsSection.tsx: all 4 reviews
- * render "★★★★★" (5/5) on the page, so ratingValue 5 + reviewCount 4 is
- * exactly what's visibly on the page, not a separate claim — same
- * `Rahul Jain` / `Zaibullah Mohsin` / `M. Abdullah Business` / `Rajesh
- * Jadhav` reviews, same star count, just made spec-valid. If a review's
- * displayed star count in ReviewsSection.tsx ever changes, update
- * `ratingValue` here to match (bump `reviewCount` when a review is
- * added/removed too).
+ * `aggregateRating` was updated the same day to the real, live Google Play
+ * Store numbers (provided by the site owner from the Play Console/listing):
+ * 4.2 average rating, 500+ ratings. `ratingCount`/`reviewCount` use 500 as
+ * the floor of "500+" since that's the precise figure available.
+ *
+ * The individual `review` entries below are still the 4 real reviews shown
+ * on-page in ReviewsSection.tsx (`Rahul Jain` / `Zaibullah Mohsin` /
+ * `M. Abdullah Business` / `Rajesh Jadhav`) — a curated subset for display,
+ * not the full 500+, so they don't need to sum to the aggregate above.
  */
 export const softwareApplicationJsonLd = {
   "@context": "https://schema.org",
@@ -59,8 +56,10 @@ export const softwareApplicationJsonLd = {
   },
   aggregateRating: {
     "@type": "AggregateRating",
-    ratingValue: 5,
-    reviewCount: 4,
+    ratingValue: 4.2,
+    ratingCount: 500,
+    reviewCount: 500,
+    bestRating: 5,
   },
   review: [
     {
