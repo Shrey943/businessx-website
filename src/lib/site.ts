@@ -1,5 +1,12 @@
+/**
+ * Must match the Production domain set in Vercel, which is currently
+ * `www.mybusinessx.com` (the apex 308-redirects to it). Canonicals, the
+ * sitemap and OG URLs all derive from this — if it points at a host that
+ * redirects, every canonical is a redirect and Google has to guess.
+ * If you flip Vercel's primary domain to the apex, drop the `www.` here.
+ */
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://mybusinessx.com";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.mybusinessx.com";
 
 export const SITE_NAME = "BusinessX";
 
