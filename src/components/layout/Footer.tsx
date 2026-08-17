@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { PLAY_URL } from "@/lib/site";
+import { APP_STORE_URL, PLAY_URL } from "@/lib/site";
 
 const productLinks = [
   { label: "Try it live", href: "/#try" },
@@ -112,9 +112,18 @@ export default function Footer() {
                 </svg>
                 Android
               </a>
-              <span className="inline-flex items-center gap-2 border border-dashed border-white/20 text-muted-3 text-sm font-medium px-4 py-2.5 rounded-pill w-fit">
-                iOS — soon
-              </span>
+              <a
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white text-sm font-semibold px-4 py-2.5 rounded-pill transition-colors w-fit"
+              >
+                <svg viewBox="0 0 20 22" className="w-4 h-[18px] fill-white flex-shrink-0">
+                  <path d="M14.94 11.65c-.02-2.17 1.77-3.21 1.85-3.26-1.01-1.48-2.58-1.68-3.14-1.7-1.34-.14-2.62.79-3.3.79-.68 0-1.73-.77-2.84-.75-1.46.02-2.81.85-3.56 2.16-1.52 2.64-.39 6.54 1.09 8.68.72 1.05 1.58 2.22 2.71 2.18 1.09-.04 1.5-.7 2.82-.7 1.31 0 1.69.7 2.84.68 1.18-.02 1.92-1.06 2.63-2.12.83-1.22 1.17-2.4 1.19-2.46-.03-.01-2.27-.87-2.29-3.7z" />
+                  <path d="M12.73 5.03c.6-.73 1-1.73.89-2.74-.86.04-1.9.57-2.52 1.29-.55.64-1.04 1.68-.91 2.66.96.07 1.94-.49 2.54-1.21z" />
+                </svg>
+                iOS
+              </a>
             </div>
           </div>
         </div>

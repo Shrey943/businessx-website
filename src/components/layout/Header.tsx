@@ -4,7 +4,6 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { PLAY_URL } from "@/lib/site";
 
 const navLinks = [
   { label: "Try it", href: "/#try" },
@@ -69,14 +68,12 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <a
-            href={PLAY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/#top"
             className="ml-2 inline-flex items-center gap-2 bg-ink text-white text-sm font-bold px-5 py-[11px] rounded-xl shadow-cta transition-transform hover:-translate-y-0.5"
           >
             Get the app →
-          </a>
+          </Link>
         </nav>
 
         <button
@@ -109,15 +106,13 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <a
-            href={PLAY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/#top"
             onClick={() => setMobileOpen(false)}
             className="mt-2 bg-ink text-white text-center py-[13px] rounded-xl font-bold"
           >
-            Get it on Google Play
-          </a>
+            Get the app
+          </Link>
         </div>
       )}
     </header>

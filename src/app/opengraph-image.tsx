@@ -6,7 +6,7 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const HEADLINE = "Know your profit, every day.";
-const SUBLINE = "Free Android app · Works offline · 170,000+ shops";
+const SUBLINE = "Android & iOS · Works offline · 170,000+ shops";
 
 export default async function Image() {
   const bold = await loadGoogleFont("Poppins:wght@800", `BusinessX${HEADLINE}${SUBLINE}`);

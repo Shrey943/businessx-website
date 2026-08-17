@@ -1,4 +1,4 @@
-import { APP_NAME, CONTACT_EMAIL, PLAY_URL, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import { APP_NAME, APP_STORE_URL, CONTACT_EMAIL, PLAY_URL, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const organizationJsonLd = {
   "@context": "https://schema.org",
@@ -11,7 +11,7 @@ export const organizationJsonLd = {
     email: CONTACT_EMAIL,
     contactType: "customer support",
   },
-  sameAs: [PLAY_URL],
+  sameAs: [PLAY_URL, APP_STORE_URL],
 };
 
 export const websiteJsonLd = {
@@ -37,6 +37,15 @@ export const websiteJsonLd = {
  * on-page in ReviewsSection.tsx (`Rahul Jain` / `Zaibullah Mohsin` /
  * `M. Abdullah Business` / `Rajesh Jadhav`) — a curated subset for display,
  * not the full 500+, so they don't need to sum to the aggregate above.
+ *
+ * The app also went live on the Apple App Store on 2026-08-17. `operatingSystem`
+ * below is now `"ANDROID, IOS"` (schema.org's `operatingSystem` is single-valued
+ * `Text`; a comma-separated string is the documented convention for multi-platform
+ * apps, not an array), and `sameAs` on the Organization above now includes the App
+ * Store link too. `aggregateRating`/`review`/`installUrl`/`downloadUrl` below are
+ * left pointing at Google Play only — there is no real App Store rating data yet
+ * (the listing is brand new) and we don't want to fabricate iOS review counts.
+ * Revisit once the App Store listing has enough real reviews.
  */
 export const softwareApplicationJsonLd = {
   "@context": "https://schema.org",
@@ -46,7 +55,7 @@ export const softwareApplicationJsonLd = {
   url: SITE_URL,
   description: SITE_DESCRIPTION,
   applicationCategory: "BusinessApplication",
-  operatingSystem: "Android",
+  operatingSystem: "ANDROID, IOS",
   installUrl: PLAY_URL,
   downloadUrl: PLAY_URL,
   offers: {

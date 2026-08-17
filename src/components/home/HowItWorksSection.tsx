@@ -44,7 +44,7 @@ export default function HowItWorksSection() {
   const { active, setStepRef } = useHowActive(STEPS.length);
 
   return (
-    <section id="how" className="bg-bg">
+    <section className="bg-bg">
       <div className="max-w-[1220px] mx-auto px-[clamp(20px,5vw,32px)] py-[clamp(64px,8vw,116px)]">
         <div data-animate className="text-center max-w-[620px] mx-auto mb-[clamp(40px,5vw,64px)]">
           <div className="text-[12.5px] font-bold tracking-[.18em] uppercase text-brand mb-3.5">How it works</div>
@@ -55,6 +55,8 @@ export default function HowItWorksSection() {
             Every screen below is BusinessX mid-use — a real shop&apos;s day.
           </p>
         </div>
+
+        <div id="how" className="scroll-mt-28 lg:scroll-mt-40" />
 
         {/* Desktop: sticky, vertically-centered phone with cross-fading text steps */}
         <div className="hidden lg:grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
