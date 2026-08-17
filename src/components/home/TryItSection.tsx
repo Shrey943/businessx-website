@@ -13,7 +13,7 @@ export default function TryItSection() {
   const { tab, setTab } = useShopDemoContext();
 
   return (
-    <section id="try" className="bg-white border-t border-ink/[.06]">
+    <section className="bg-white border-t border-ink/[.06]">
       <div className="max-w-[1220px] mx-auto px-[clamp(20px,5vw,32px)] py-[clamp(64px,8vw,116px)]">
         <div data-animate className="text-center max-w-[620px] mx-auto mb-[clamp(40px,5vw,60px)]">
           <div className="text-[12.5px] font-bold tracking-[.18em] uppercase text-brand mb-3.5">Tap to try</div>
@@ -27,7 +27,7 @@ export default function TryItSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[clamp(28px,4vw,58px)] items-center">
+        <div id="try" className="grid grid-cols-1 lg:grid-cols-2 gap-[clamp(28px,4vw,58px)] items-center scroll-mt-28 lg:scroll-mt-40">
           <div data-stagger className="flex flex-col gap-3">
             {STEPS.map((s) => {
               const active = tab === s.id;

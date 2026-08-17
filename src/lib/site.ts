@@ -16,9 +16,12 @@ export const APP_NAME = "Daily Sales Profit & Inventory";
 export const PLAY_URL =
   "https://play.google.com/store/apps/details?id=com.shrey_businessx.android";
 
+export const APP_STORE_URL =
+  "https://apps.apple.com/us/app/daily-sales-profit-inventory/id6791282509";
+
 export const CONTACT_EMAIL = "businessxteam@gmail.com";
 
 export const SITE_DESCRIPTION =
-  "Track stock, record sales and see real profit — offline, in any currency. Free Android app, 170,000+ shops. Known on Google Play as Daily Sales Profit & Inventory.";
+  "Track stock, record sales and see real profit — offline, in any currency. Free on Android & iOS. 170,000+ shops use Daily Sales Profit & Inventory.";
 
 export const OG_IMAGE_ALT = "BusinessX — free inventory and sales tracker for small business";
